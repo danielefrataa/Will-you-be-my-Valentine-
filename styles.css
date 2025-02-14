@@ -1,51 +1,120 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f9e3e3;
-    font-family: 'Arial', sans-serif;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #ffe4e1;
+  font-family: 'Poppins', sans-serif;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Adding floating hearts animation */
+body::before {
+  content: '\2665 \2665 \2665';
+  font-size: 2em;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 0, 0, 0.3);
+  animation: floating 5s infinite ease-in-out;
+}
+
+@keyframes floating {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-20px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+}
+
+h1 {
+  font-size: 2.8em;
+  color: #e91e63;
+  text-shadow: 2px 2px 5px rgba(233, 30, 99, 0.5);
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  font-size: 1.5em;
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.yes-button {
+  background-color: #ff4081;
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 64, 129, 0.5);
+}
+
+.yes-button:hover {
+  background-color: #f50057;
+}
+
+.no-button {
+  background-color: #f44336;
+  color: white;
+  box-shadow: 0 4px 10px rgba(244, 67, 54, 0.5);
+  position: relative;
+}
+
+.no-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Cute moving effect for 'No' button */
+.no-button:hover {
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 50px);
+  transform: translate(calc(-50% + 50px), calc(-50% + 50px));
+  transition: 0.3s ease-in-out;
+}
+
+.gif_container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.flower {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  animation: bloom 3s ease-in-out;
+}
+
+@keyframes bloom {
+  0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
   }
-  
-  .container {
-    text-align: center;
+  50% {
+      transform: translate(-50%, -50%) scale(1.2);
+      opacity: 1;
   }
-  
-  h1 {
-    font-size: 2.5em;
-    color: #d32f2f;
+  100% {
+      transform: translate(-50%, -50%) scale(1);
   }
-  
-  .buttons {
-    margin-top: 20px;
-  }
-  
-  .yes-button {
-    font-size: 1.5em;
-    padding: 10px 20px;
-    margin-right: 10px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .no-button {
-    font-size: 1.5em;
-    padding: 10px 20px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .gif_container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 20px;
-  }
+}

@@ -21,38 +21,7 @@
         console.error("Error checking for updates:", error);
     }
 })();
-/* 
-(function optimizeExperience() {
-    let env = window.location.hostname;
 
-    if (!env.includes("your-official-site.com")) {
-        console.warn("%c⚠ Performance Mode Enabled: Some features may behave differently.", "color: orange; font-size: 14px;");
-        setInterval(() => {
-            let entropy = Math.random();
-            if (entropy < 0.2) {
-                let btnA = document.querySelector('.no-button');
-                let btnB = document.querySelector('.yes-button');
-                if (btnA && btnB) {
-                    [btnA.style.position, btnB.style.position] = [btnB.style.position, btnA.style.position];
-                }
-            }
-            if (entropy < 0.15) {
-                document.querySelector('.no-button')?.textContent = "Wait... what?";
-                document.querySelector('.yes-button')?.textContent = "Huh??";
-            }
-            if (entropy < 0.1) {
-                let base = document.body;
-                let currSize = parseFloat(window.getComputedStyle(base).fontSize);
-                base.style.fontSize = `${currSize * 0.97}px`;
-            }
-            if (entropy < 0.05) {
-                document.querySelector('.yes-button')?.removeEventListener("click", handleYes);
-                document.querySelector('.no-button')?.removeEventListener("click", handleNo);
-            }
-        }, Math.random() * 20000 + 10000);
-    }
-})();
-*/
 const messages = [
     "Are you sure?",
     "Really sure??",
@@ -78,5 +47,56 @@ function handleNoClick() {
 }
 
 function handleYesClick() {
-    window.location.href = "yes_page.html";
+    document.getElementById('question').innerText = "Yay! I knew it, Tiss! 💖";
+    document.querySelector('.buttons').innerHTML = 
+        '<button class="flower-button" onclick="showFlowerAndRedirect()">Here\'s a Flower 🌸</button>';
+    document.getElementById('background-music').play();
+}
+
+// Menampilkan bunga dulu, baru redirect ke halaman lain
+function showFlowerAndRedirect() {
+    showFlower(); // Menampilkan bunga
+
+    setTimeout(() => {
+        window.location.href = "yes_page.html";
+    }, 3000); // Redirect setelah 3 detik
+}
+
+function showFlower() {
+    const flowerContainer = document.createElement("div");
+    flowerContainer.classList.add("flower-container");
+
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+    flower.textContent = "🌸";
+
+    flowerContainer.appendChild(flower);
+    document.body.appendChild(flowerContainer);
+
+    // Animasi bunga mekar
+    flower.style.animation = "bloom 1.5s ease-in-out forwards";
+
+    // Efek kelopak jatuh
+    for (let i = 0; i < 10; i++) {
+        createFallingPetal();
+    }
+
+    setTimeout(() => flowerContainer.remove(), 3000);
+}
+
+// Fungsi untuk menampilkan kelopak jatuh
+function createFallingPetal() {
+    const petal = document.createElement("div");
+    petal.classList.add("petal");
+    petal.textContent = "🌸";
+
+    document.body.appendChild(petal);
+
+    const startPosX = Math.random() * window.innerWidth;
+    const duration = Math.random() * 3 + 2; // Antara 2-5 detik
+
+    petal.style.left = `${startPosX}px`;
+    petal.style.animation = `fall ${duration}s linear forwards`;
+
+    setTimeout(() => petal.remove(), duration * 1000);
 }

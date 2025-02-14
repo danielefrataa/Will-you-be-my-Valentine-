@@ -1,24 +1,53 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f9e3e3;
-    font-family: 'Arial', sans-serif;
+.yes-button {
+    font-size: 1.5em;
+    padding: 12px 24px;
+    background-color: #ff4081; /* A cute pink */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.container {
-    text-align: center;
+.yes-button:hover {
+    background-color: #e91e63; /* A deeper pink */
+    transform: scale(1.1);
 }
 
-.header_text {
-    font-size: 3em;
-    color: #d32f2f;
+
+/* Animasi bunga mekar */
+/* Animasi bunga mekar */
+@keyframes bloom {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-.gif_container img {
-    width: 100%; 
-    max-width: 500px; 
-    height: auto; 
+/* Gaya bunga */
+.flower-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 70px;
+}
+
+/* Efek kelopak jatuh */
+.petal {
+    position: fixed;
+    top: -50px;
+    font-size: 25px;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
